@@ -1,9 +1,17 @@
-# require 'http://rubygems.org'
-# require 'json'
-# # # Dir["/json/*"].each {|file| p require file }
+
+# # Dir["/json/*"].each {|file| p require file }
 # require 'rolecall1.json'
 
-p vote_data = File.open("rolecall1.json", "a+")
+# vote_data = File.open("rolecall1.json")
 # voting_hash = JSON.parse()
 
 # p council_votes
+
+
+# def parse
+
+# end
+
+vote_data = File.open("rolecall1.json", "a+")
+
+puts vote_data
