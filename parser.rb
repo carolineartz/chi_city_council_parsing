@@ -40,7 +40,7 @@ end
 
 votes1.flatten[1]["Part"].each do |key, value|
 
-  if key["Sect"].class == Array
+  if key["Sect"].class == Array    # DOCUMENT WITH MULTIPLE ORDINANCES TO VOTE ON
     key["Sect"].each do |hash|
       if hash != nil && hash.has_key?("Table")
         hash["Table"].each do |table_hash|
@@ -52,11 +52,19 @@ votes1.flatten[1]["Part"].each do |key, value|
             end
           end
         end
-      elsif hash.has_key?("Sect")
-
+      elsif hash != nil && hash.has_key?("Sect")   # DOCUMENT WITH A SINGLE ORDINANCE TO VOTE ON
         hash["Sect"][1].each do |table_hash|
-
-          table_hash.flatten.each do |vote_hash|
+          table_hash.flatten.each do |vote_table|
+            if vote_table["TR"].class == Array
+              vote_table["TR"].each do |x|
+                if x["TH"]
+                  puts "THIS IS A HEADER"
+                end
+                if x["TD"]
+                  p x["TD"]  # THIS IS WHERE THE VOTES ARE...
+                end
+              end
+            end
 
           end
         end
