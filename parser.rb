@@ -22,28 +22,33 @@ def grab_voted_on_legislation(json_obj)
   json_obj["TaggedPDF-doc"]
 end
 
-p votes1["TaggedPDF-doc"]["Part"][1]["Table"]["TR"][1]["TD"]  #=> contains the Title of Legislation and City-Identifier
-
-puts "---------------------------------------------------------------"
+votes1["TaggedPDF-doc"]["Part"][1]["Table"]["TR"][1]["TD"]  #=> contains the Title of Legislation and City-Identifier
 
 
-# eliminate_headers(votes2).each do |ordinance|
-#   p ordinance["Table"]
-#   puts "---------------------------------------------------------------"
-# end
-# p votes2["TaggedPDF-doc"]["Part"][1]["Table"]["TR"][1]["TD"]
-
-# puts "---------------------------------------------------------------"
-
-# p votes2["TaggedPDF-doc"]["Part"][0]
-# p votes2["TaggedPDF-doc"]["Part"][1]
-# p votes2["TaggedPDF-doc"]["Part"][2]
-# p votes1["TaggedPDF-doc"]["Part"][1]["Table"]["TR"][1]["TD"]
-
-
-
+votes2.flatten[1]["Part"].each do |key, value|
+  # puts key
+  puts "========================="
+  puts key["Sect"].flatten
+  puts "========================="
+end
 
 puts "=============================================================="
+
+# votes1.flatten[1]["Part"].each do |key, value|   #IT HAS NO VALUE ========     THIS IS FUCKED
+#   puts key
+#   puts "========================="
+#   puts key["Sect"].length
+#   puts "========================="
+# end
+
+
+# ORIGINAL STARTING POINT #############################################
+
+# votes1.flatten[1]["Part"].each do |key, value|
+#   puts "#{key} : #{value}"
+#   puts "========================="
+
+# end
 
 
 
