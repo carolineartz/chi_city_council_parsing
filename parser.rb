@@ -25,29 +25,50 @@ end
 # votes1["TaggedPDF-doc"]["Part"][1]["Table"]["TR"][1]["TD"]  #=> contains the Title of Legislation and City-Identifier
 
 
-# THIS SEEMS TO WORK FOR VOTES 1, 2
+# THIS SEEMS TO WORK FOR VOTES 1, 2 #############################################
+#################################################################################
+#################################################################################
 
-votes1["TaggedPDF-doc"]["Part"][1]["Table"]["TR"].each do |header_hash|
-  if header_hash.has_key?("TD")
-    puts header_hash["TD"]  # Legislation Info
-    puts "======================================================"
+def get_legislation_title_and_city_identifier(json)
+  # THIS METHOD WILL HOUSE SOME COOL SHIT HOPEFULLY
+  legislation_info = []
+  json["TaggedPDF-doc"]["Part"][1]["Table"]["TR"].each do |header_hash|
+    if header_hash.has_key?("TD")
+      legislation_info << header_hash["TD"]  # LEGISLATION INFO ON EACH ORDINANCE
+    end
   end
+  legislation_info
 end
+
+p get_legislation_title_and_city_identifier(votes2)
+
+# votes2["TaggedPDF-doc"]["Part"][1]["Table"]["TR"].each do |header_hash|
+#   if header_hash.has_key?("TD")
+#     legislation_info << header_hash["TD"]  # LEGISLATION INFO ON EACH ORDINANCE
+#   end
+# end
 
 
 
 # THIS GETS US THE VOTES ---------------------------------------
 
-votes1.flatten[1]["Part"].each do |key, value|
+votes2.flatten[1]["Part"].each do |key, value|
 
   if key["Sect"].class == Array    # DOCUMENT WITH MULTIPLE ORDINANCES TO VOTE ON
     key["Sect"].each do |hash|
       if hash != nil && hash.has_key?("Table")
+        hash['Table'].flatten.length
         hash["Table"].each do |table_hash|
           table_hash.each do |key, value|
             # puts "THIS #{key} : #{value}"
             value.each do |alderman_hash|
-              p alderman_hash.values.flatten
+              if alderman_hash["TH"]
+                puts "This is a header"
+              end
+              if alderman_hash["TD"]
+                p alderman_hash["TD"]
+              end
+              # p alderman_hash.values.flatten
               puts "-------------------------------------------------------"
             end
           end
