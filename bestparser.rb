@@ -1,0 +1,140 @@
+require 'json'
+
+file = File.read(Dir.pwd + '/rollcall1.json')
+file2 = File.read(Dir.pwd + '/rollcall2.json')
+votes1 = JSON.parse(file)
+votes2 = JSON.parse(file2)
+# votes["TaggedPDF-doc"]["Part"].each do |key, value|
+
+#   # puts key["Sect"]
+#   # puts "------------------------------------------------------"
+#   # puts key["Title"]
+#   # puts "------------------------------------------------------"
+#   # puts key["Table"]
+# end
+
+def eliminate_headers(json_obj)
+  vote_record = json_obj["TaggedPDF-doc"]["Part"]
+  vote_record[1..-1]
+end
+
+def grab_voted_on_legislation(json_obj)
+  json_obj["TaggedPDF-doc"]
+end
+
+# votes1["TaggedPDF-doc"]["Part"][1]["Table"]["TR"][1]["TD"]  #=> contains the Title of Legislation and City-Identifier
+
+
+# THIS SEEMS TO WORK FOR VOTES 1, 2 #############################################
+#################################################################################
+#################################################################################
+
+def get_legislation_title_and_city_identifier(json)
+  # THIS METHOD WILL HOUSE SOME COOL SHIT HOPEFULLY
+  legislation_info = []
+  json["TaggedPDF-doc"]["Part"][1]["Table"]["TR"].each do |header_hash|
+    if header_hash.has_key?("TD")
+      legislation_info << header_hash["TD"]  # LEGISLATION INFO ON EACH ORDINANCE
+    end
+  end
+  legislation_info
+end
+
+p get_legislation_title_and_city_identifier(votes2)
+
+
+# votes2["TaggedPDF-doc"]["Part"][1]["Table"]["TR"].each do |header_hash|
+#   if header_hash.has_key?("TD")
+#     legislation_info << header_hash["TD"]  # LEGISLATION INFO ON EACH ORDINANCE
+#   end
+# end
+
+
+
+# THIS GETS US THE VOTES ---------------------------------------
+
+votes2.flatten[1]["Part"].each do |key, value|
+
+  if key["Sect"].class == Array    # DOCUMENT WITH MULTIPLE ORDINANCES TO VOTE ON
+    key["Sect"].each do |hash|
+      if hash != nil && hash.has_key?("Table")
+        hash['Table'].flatten.length
+        hash["Table"].each do |table_hash|
+          table_hash.each do |key, value|
+            # puts "THIS #{key} : #{value}"
+            value.each do |alderman_hash|
+              if alderman_hash["TH"]
+                puts "This is a header"
+              end
+              if alderman_hash["TD"]
+                p alderman_hash["TD"]
+              end
+              # p alderman_hash.values.flatten
+              puts "-------------------------------------------------------"
+            end
+          end
+        end
+      elsif hash != nil && hash.has_key?("Sect")   # DOCUMENT WITH A SINGLE ORDINANCE TO VOTE ON
+        hash["Sect"][1].each do |table_hash|
+          table_hash.flatten.each do |vote_table|
+            if vote_table["TR"].class == Array
+              vote_table["TR"].each do |x|
+                if x["TH"]
+                  puts "THIS IS A HEADER"
+                end
+                if x["TD"]
+                  p x["TD"]  # THIS IS WHERE THE VOTES ARE...
+                end
+              end
+            end
+
+          end
+        end
+
+
+
+      end
+    end
+  end
+end
+
+
+puts "-------------------------------------------------------"
+puts "-------------------------------------------------------"
+puts "-------------------------------------------------------"
+
+# votes1.flatten[1]["Part"].each do |key, value|
+#   # puts "========================="
+#   # puts key["Sect"]
+#   # puts "========================="
+#   # puts value
+#   puts "=============================================================="
+#   if key["Sect"].class == Array
+#     puts "yea"
+#     key["Sect"].each do |hash|
+#       puts "++++++++++++++++++++++++++++++++++++++"
+#       puts hash
+#       puts "++++++++++++++++++++++++++++++++++++++"
+#     end
+#   end
+# end
+
+
+# votes1.flatten[1]["Part"].each do |key, value|   #IT HAS NO VALUE ========     THIS IS FUCKED
+#   puts key
+#   puts "========================="
+#   puts key["Sect"].length
+#   puts "========================="
+# end
+
+
+# ORIGINAL STARTING POINT #############################################
+
+# votes1.flatten[1]["Part"].each do |key, value|
+#   puts "#{key} : #{value}"
+#   puts "========================="
+
+# end
+
+
+
