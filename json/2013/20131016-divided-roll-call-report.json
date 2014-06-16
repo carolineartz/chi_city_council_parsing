@@ -1,0 +1,57 @@
+{
+    "TaggedPDF-doc": {
+        "x:xmpmeta": {
+            "@xmlns:x": "adobe:ns:meta/",
+            "@x:xmptk": "Adobe XMP Core 5.4-c005 78.147326, 2012/08/23-13:03:03        ",
+            "rdf:RDF": {
+                "@xmlns:rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+                "rdf:Description": {
+                    "@rdf:about": "",
+                    "@xmlns:xmp": "http://ns.adobe.com/xap/1.0/",
+                    "@xmlns:pdf": "http://ns.adobe.com/pdf/1.3/",
+                    "@xmlns:dc": "http://purl.org/dc/elements/1.1/",
+                    "@xmlns:xmpMM": "http://ns.adobe.com/xap/1.0/mm/",
+                    "xmp:CreateDate": "2013-10-16T21:05:08-05:00",
+                    "xmp:CreatorTool": "PScript5.dll Version 5.2.2",
+                    "xmp:ModifyDate": "2013-10-16T21:05:08-05:00",
+                    "pdf:Producer": "Acrobat Distiller 9.2.0 (Windows)",
+                    "dc:format": "xml",
+                    "dc:creator": {
+                        "rdf:Seq": {
+                            "rdf:li": null
+                        }
+                    },
+                    "dc:title": {
+                        "rdf:Alt": {
+                            "rdf:li": {
+                                "@xml:lang": "x-default"
+                            }
+                        }
+                    },
+                    "xmpMM:DocumentID": "uuid:8133a7e6-1a38-44f2-8af9-2e08cc678d95",
+                    "xmpMM:InstanceID": "uuid:6028d678-88af-4b41-bb1e-d7d1dd4c7b6f"
+                }
+            }
+        },
+        "Figure": {
+            "ImageData": {
+                "@src": ""
+            }
+        },
+        "P": ["City Hall \n121 N. LaSalle St. \nChicago, IL  60602 \nwww.chicityclerk.com", "Attendance and Divided Roll Call Votes         at the City of Chicago City Council Meeting October 16, 2013"],
+        "Part": [{
+            "H4": "Attendance:",
+            "P": ["Present --Aldermen Moreno, Fioretti,  Dowell, Burns, Hairston, Sawyer, Holmes,  Harris, Beale, Balcer, C\u00e1rdenas, Quinn, Burke, Foulkes, Thompson, Thomas, Lane, O\u2019Shea, Cochran, Brookins, Mu\u00f1oz, Zalewski, Chandler, Solis, Maldonado, Burnett, Ervin, Graham, Reboyas, Suarez, Waguespack,  Mell, Austin,  Col\u00f3n, Sposato,  Mitts, Cullerton, Laurino, P. O\u2019Connor,", "M. O\u2019Connor,  Reilly, Smith, Tunney,  Arena, Cappleman, Pawar,  Osterman, Moore, Silverstein \u2013 49.", "Absent --Alderman Pope \u2013 1."]
+        }, {
+            "H4": "Divided Roll Call Vote(s):",
+            "Table": {
+                "TR": [{
+                    "TH": ["Record No.", "Title", "Vote"]
+                }, {
+                    "TD": [null, "NONE", null]
+                }]
+            },
+            "P": ["VOTE KEY:", "Y=Yes; N=No; A=Absent; NV=Not Voting; V=Vacant R=Recusals from voting are notated in accordance with the provisions of Rule 14 of City Council\u2019s Rules of Order and Procedure.", "Created\tby\tthe\tOffice\tof\tthe\tCity\tClerk,\tCity\tof\tChicago"]
+        }]
+    }
+}
